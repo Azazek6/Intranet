@@ -1,0 +1,46 @@
+<main class="container">
+  <section class="add-item">
+    <div class="card-add card-gen-cite">
+      <div class="card-title">
+        <h2>Generar Nueva Cita</h2>
+      </div>
+      <form action="/receptionist/addCite" method="post">
+        <div class="card-form gen-cite">
+          <div class="card-items-form-gen">
+            <label for="patient">Paciente:</label>
+            <input  type="text" name="name" id="patient" readonly />
+            <input type="text" name="dni" id="dnipat" hidden>
+            <button type="submit" id="getPatient">Obtener</button>
+          </div>
+          <div class="card-items-form">
+            <label for="date">Fecha:</label>
+            <input type="date" name="date" id="date" />
+          </div>
+          <div class="card-items-form">
+            <label for="especialitys">Especialidad:</label>
+            <select name="especialitys" id="especialitys">
+              <option value="">-- Selecciona Especialidad --</option>
+              {{#each especialities}}
+                <option value="{{name}}">{{name}}</option> 
+              {{/each}}
+            </select>
+          </div>
+          <div class="card-items-form">
+            <label for="doctors">Doctor:</label>
+            <select name="doctors" id="doctors">
+            </select>
+          </div>
+          <div class="card-items-form">
+            <label for="amount">Monto:</label>
+            <input type="text" name="amount" id="amount" value="50" readonly/>
+          </div>
+          <div class="card-items-button">
+            <button id="newCite" type="submit">REGISTRAR NUEVA CITA</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+{{>popup}}

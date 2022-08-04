@@ -1,0 +1,53 @@
+{{#if user}}
+  <header>
+    <nav>
+      <a href="/">
+        <img src="/img/logo.png" alt="" />
+      </a>
+      <ul>
+        {{#if isDoctor}}
+          <li>
+            <a>Acciones &nbsp; <i class="fa fa-caret-down"></i></a>
+            <ul class="sub-nav">
+              <li class="sub-w"><a href="/doctor/cites">Ver Citas</a></li>
+              <li><a href="/doctor/cites-pending">Diagn&oacute;sticos pendientes</a></li>
+            </ul>
+          </li>
+        {{/if}}
+        {{#if isReceptionist}}
+          <li>
+            <a href="/receptionist/search">Buscar Paciente</a>
+          </li>
+          <li>
+            <a>Acciones &nbsp; <i class="fa fa-caret-down"></i></a>
+            <ul class="sub-nav">
+              <li class="sub-w"><a href="/receptionist/generate-cite">Generar
+                  Cita</a></li>
+              <li><a href="/receptionist/addRecord">Crear Historial
+                  Cl&iacute;nico</a></li>
+            </ul>
+          </li>
+        {{/if}}
+        {{#if isAdmin}}
+          <li>
+            <a>Registrar &nbsp; <i class="fa fa-caret-down"></i></a>
+            <ul class="sub-nav">
+              <li class="sub-w"><a
+                  href="/admin/addReceptionist"
+                >Recepcionistas</a></li>
+              <li><a href="/admin/addDoctor">Doctores</a></li>
+              <li><a href="/admin/addAdmin">Administradores</a></li>
+            </ul>
+          </li>
+        {{/if}}
+        <li>
+          <a>Mi Perfil &nbsp;<i class="fa fa-caret-down"></i></a>
+          <ul class="sub-nav">
+            <li class="sub-w"><a href="/auth/logout">Cerrar Sesi&oacute;n</a></li>
+          </ul>
+        </li>
+        <li>{{user.rol}}</li>
+      </ul>
+    </nav>
+  </header>
+{{/if}}

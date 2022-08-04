@@ -1,0 +1,56 @@
+<main class="container">
+  <section class="proccess-cite">
+    <div class="double-card">
+      <div class="d-card-1">
+        <div class="card-title proccess-title">
+          <h2 class="text-procces">Historia Cl&iacute;nica N°
+            {{dataRecord.record}}</h2>
+        </div>
+        <div class="container-image-icon">
+          <img src="/img/icons/patient.png" alt="" />
+        </div>
+        <div class="card-sub-title">
+          <h3>DNI N° {{dataRecord.dni}} | {{dataRecord.age}} años</h3>
+        </div>
+        <div class="element-d-card">
+          <p class="name-card">Nombres:</p>
+          <p>{{dataRecord.name}}</p>
+        </div>
+        <div class="element-d-card">
+          <p class="name-card">Apellidos:</p>
+          <p>{{dataRecord.lastname}}</p>
+        </div>
+        <div class="element-d-card">
+          <p class="name-card">Direcci&oacute;n:</p>
+          <p>{{dataRecord.address}}</p>
+        </div>
+        <div class="element-d-card">
+          <p class="name-card">Estado Civil:</p>
+          <p>{{dataRecord.status}}</p>
+        </div>
+        <div class="out-element-card">
+          <p class="name-card-out">Fecha de Nacimiento</p>
+          <p>{{newDateBirth}}</p>
+        </div>
+      </div>
+      <div class="d-card-2">
+        <div class="card-title proccess-title">
+          <h2 class="text-procces">Especialidad: {{dataCite.especialitys}}</h2>
+        </div>
+        {{#verify dataCite.status "Pendiente"}}
+        <div class="btn-d-card">
+          <button id="createDiagnost">Crear Diagn&oacute;stico</button>
+        </div>
+        {{/verify}}
+        <div class="btn-d-card">
+          <button id="viewDiagnostic">Ver diagn&oacute;sticos anteriores</button>
+        </div>
+        <div class="container-image-icon img-bottom">
+          <img src="/img/icons/diagnost.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{>popup-proccess-cite}}

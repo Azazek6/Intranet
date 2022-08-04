@@ -1,0 +1,21 @@
+<div id="popup" class="popup-content">
+  <div class="popup">
+    <div class="popup-close">
+      <img src="/img/icons/close.png" alt="close" id="close-popup" />
+    </div>
+    <form action="/receptionist/getPatient" method="post">
+      <div class="popup-form">
+        <label for="">DNI: </label>
+        <input
+          type="text"
+          name="dni"
+          id="dni"
+          maxlength="8"
+          placeholder="Ingrese DNI"
+          autofocus
+        />
+        <button id="patientInfo" type="submit">Obtener</button>
+      </div>
+    </form>
+  </div>
+</div>

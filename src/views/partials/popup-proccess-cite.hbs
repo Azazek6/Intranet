@@ -1,0 +1,38 @@
+<div id="popup" class="popup-content">
+  <div class="popup">
+    <div class="popup-close">
+      <img src="/img/icons/close.png" alt="close" id="close-popup" />
+    </div>
+    <div class="popup-diagnostic-container">
+      <p>Paciente: {{dataRecord.name}} {{dataRecord.lastname}}</p>
+      <p>Fecha de Diagnostico: {{dateNow}}</p>
+      <p>Diagnostico:</p>
+      <div class="popup-form-diagnostic">
+        <form id="createDiagnostic" method="post">
+          <textarea name="diagnostic" id="diagnostic" autofocus></textarea>
+          <input
+            type="text"
+            hidden
+            id="doctor"
+            name="doctor"
+            value="{{getDoctor._id}}"
+          /><input
+            type="text"
+            hidden
+            id="patient"
+            name="patient"
+            value="{{dataRecord._id}}"
+          />
+          <input
+            type="text"
+            id="cite"
+            name="cite"
+            value="{{dataCite._id}}"
+            hidden
+          />
+          <button>Procesar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

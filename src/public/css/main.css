@@ -1,0 +1,657 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: none;
+  font-family: "Mulish", sans-serif;
+  --button-background: rgb(125, 208, 236);
+  --button-label: rgb(20, 151, 194);
+}
+ul {
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+input {
+  outline: none;
+}
+textarea {
+  outline: none;
+}
+select {
+  outline: none;
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+a {
+  text-decoration: none;
+  font-weight: 700;
+  color: #fff;
+}
+body {
+  background-color: rgb(125, 208, 236);
+}
+.msg {
+  position: absolute;
+  display: flex;
+  margin-top: 15px;
+  align-items: center;
+  border-radius: 50px;
+  background-color: rgb(48, 216, 165);
+  padding: 7px;
+  right: 0;
+  transition: all 0.6s;
+  margin-right: 20px;
+}
+.msg_err {
+  background-color: rgb(214, 118, 111);
+}
+.msg .m1 {
+  padding: 5px;
+}
+.msg .m2 {
+  padding: 5px;
+  border-left: 1px solid rgb(15, 167, 121);
+}
+.m1 p.message {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+.m2 p.icon {
+  font-weight: 700;
+  font-size: 25px;
+  color: #1f8b6a;
+}
+/*Navegacion*/
+header {
+  background-color: rgb(86, 190, 225);
+  width: 100%;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav a > img {
+  margin-left: 5px;
+  width: 160px;
+  height: 60px;
+  padding: 10px;
+}
+nav ul {
+  color: #fff;
+  display: flex;
+  gap: 20px;
+  margin-right: 25px;
+  font-weight: 700;
+}
+nav ul > li {
+  cursor: pointer;
+  position: relative;
+}
+nav ul > li a:hover {
+  text-decoration: underline;
+}
+nav ul > li:hover ul.sub-nav {
+  visibility: visible;
+  opacity: 1;
+}
+nav ul > li > ul.sub-nav {
+  position: absolute;
+  background-color: rgb(86, 190, 225);
+  display: block;
+  visibility: hidden;
+  width: 205%;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+nav ul > li > ul.sub-nav > li {
+  font-size: 13px;
+}
+nav ul > li > ul.sub-nav > li.sub-w {
+  padding-top: 31px;
+}
+nav ul > li > ul.sub-nav > li > a {
+  border-top: 2px solid rgb(20, 151, 191);
+  display: block;
+  padding: 8px;
+}
+nav ul > li > ul.sub-nav > li > a:hover {
+  color: rgb(0, 167, 167);
+  transition: all 0.3s;
+}
+/*Fin Navegacion*/
+/*Popup*/
+.popup-content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  background-color: #111111bd;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s 0.9s;
+  --transform: translateY(-100vh);
+  --transition: transform 0.8s;
+}
+.popup {
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: rgb(86, 190, 255);
+  border-radius: 10px;
+  padding: 10px;
+  transform: var(--transform);
+  transition: var(--transition);
+}
+.popup--show {
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity 0.6s;
+  --transform: translateY(0);
+  --transition: transform 0.8s 0.8s;
+}
+.popup-form {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 80%;
+}
+.popup-form label {
+  text-align: center;
+  width: 10%;
+  font-weight: 700;
+  line-height: 29px;
+  color: #fff;
+  font-size: 15px;
+}
+.popup-form input {
+  width: 50%;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+  background-color: rgb(174, 228, 246);
+  border-radius: 3px;
+  height: 25px;
+}
+.popup-form button {
+  width: 30%;
+  height: 25px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(48, 216, 165);
+}
+/*Fin Popup*/
+/*Home*/
+section {
+  padding: 10px;
+  margin: 0 auto;
+  width: 93%;
+}
+.main {
+  text-align: center;
+  margin-top: 160px;
+}
+.main p {
+  color: rgb(14, 199, 143);
+  font-size: 22px;
+  font-weight: bold;
+}
+/*Fin Home*/
+/*SignIn*/
+main.container-auth {
+  width: 100%;
+  margin-top: 130px;
+}
+section.auth {
+  margin: 0 auto;
+  width: 50%;
+}
+.card-auth {
+  background-color: rgb(86, 190, 225);
+  text-align: center;
+  margin: 0 auto;
+  width: 60%;
+}
+.card-auth img {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  width: 60%;
+}
+.card-auth .form-item-auth {
+  width: 100%;
+  display: grid;
+  gap: 8px;
+}
+.card-auth .form-item-auth label {
+  margin-top: 15px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #fff;
+  font-size: 18px;
+}
+.card-auth .form-item-auth input {
+  text-align: center;
+  border: none;
+  width: 80%;
+  height: 25px;
+  border-radius: 5px;
+  background-color: rgb(125, 208, 236);
+}
+.card-auth button {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  height: 30px;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(48, 216, 165);
+  color: var(--button-label);
+  font-weight: 700;
+  font-size: 14px;
+}
+/*Fin signIn*/
+/*Form Admin*/
+.add-item {
+  margin-top: 30px;
+}
+.card-add {
+  background-color: rgb(86, 190, 225);
+  margin: 0 auto;
+  width: 35%;
+}
+.card-gen-cite {
+  width: 40%;
+}
+.card-search {
+  width: 45%;
+}
+.card-record {
+  background-color: rgb(86, 190, 225);
+  margin: 0 auto;
+  width: 85%;
+}
+.card-title {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+.card-title h2 {
+  margin-top: 10px;
+  align-items: center;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: underline;
+  line-height: 1;
+}
+.card-form {
+  margin: 0 auto;
+  width: 90%;
+}
+.gen-cite {
+  margin: 0 auto;
+  width: 94%;
+}
+.gen-record {
+  display: flex;
+  width: 95%;
+  gap: 30px;
+}
+.section1 {
+  width: 50%;
+}
+.section2 {
+  width: 50%;
+}
+.card-items-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 22px;
+}
+.card-items-form-gen {
+  display: flex;
+  align-items: center;
+  padding-bottom: 22px;
+  gap: 15px;
+}
+.card-items-form-gen input {
+  width: 40%;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+  background-color: rgb(174, 228, 246);
+  border-radius: 3px;
+  height: 25px;
+}
+.card-items-form-gen label {
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  width: 26.5%;
+}
+.card-items-form-gen button {
+  width: 30%;
+  height: 25px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(48, 216, 165);
+}
+.search-pac {
+  gap: 30px;
+}
+.search-pac button {
+  width: 70%;
+  height: 25px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(48, 216, 165);
+}
+.card-items-form label {
+  width: 40%;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
+.card-items-form input {
+  width: 100%;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+  background-color: rgb(174, 228, 246);
+  border-radius: 3px;
+  height: 25px;
+}
+.card-items-form select {
+  width: 100%;
+  font-size: 13px;
+  text-align: center;
+  border: none;
+  background-color: rgb(174, 228, 246);
+  border-radius: 3px;
+  height: 25px;
+}
+.item-record label {
+  font-size: 15px;
+  width: 65%;
+}
+.card-items-button {
+  width: 100%;
+  text-align: center;
+  padding: 5px;
+}
+.card-items-button button {
+  width: 90%;
+  height: 25px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(48, 216, 165);
+  margin-bottom: 20px;
+}
+/*Fin Form Admin*/
+/*Search Record*/
+.card-items-search {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #fff;
+}
+.card-items-search .item-search {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #000;
+}
+p.p-t {
+  font-weight: 700;
+  font-size: 16px;
+}
+.card-items-search .item-search p {
+  width: 50%;
+  font-weight: 700;
+  align-items: center;
+}
+/*Fin Search*/
+/*Doctor*/
+/*ALLCites*/
+.card-cites {
+  margin-top: 30px;
+  background-color: #e4f7fe;
+  width: 100%;
+}
+.card-cites table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.card-cites table > thead > tr > th {
+  background-color: rgb(171, 228, 247);
+  color: rgb(51, 213, 106);
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
+}
+.card-cites table > tbody > tr > td {
+  text-align: center;
+  line-height: 24px;
+  border-right: 1px solid rgb(86, 187, 220);
+  border-bottom: 1px solid rgb(86, 187, 220);
+  font-size: 14px;
+  padding: 5px;
+}
+.card-cites table > tbody > tr > td.td-end {
+  border-right: none;
+}
+.card-cites table > tbody > tr > td.td-pending {
+  color: #e63e31;
+  font-weight: 700;
+}
+.card-cites table > tbody > tr > td.td-finish {
+  color: #179871;
+  font-weight: 700;
+}
+.card-cites table > tbody > tr > td .btnPro {
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 20px;
+  background-color: rgb(48, 216, 165);
+  transition: all 0.5s;
+}
+.card-cites table > tbody > tr > td .btnPro a {
+  display: block;
+  color: rgb(20, 151, 194);
+  font-size: 12px;
+}
+.card-cites table > tbody > tr > td .btnPro:hover {
+  opacity: 0.8;
+}
+/*Proccess-cite*/
+.proccess-cite {
+  margin: 0 auto;
+  width: 75%;
+}
+.double-card {
+  margin-top: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 80px;
+}
+.double-card .d-card-1 {
+  background-color: rgb(86, 190, 225);
+}
+.double-card .d-card-2 {
+  background-color: rgb(86, 190, 225);
+}
+.proccess-title {
+  margin-bottom: 8px;
+}
+h2.text-procces {
+  font-size: 20px;
+}
+.container-image-icon {
+  text-align: center;
+  width: 100%;
+}
+.container-image-icon img {
+  background: linear-gradient(
+    0deg,
+    rgba(47, 131, 209, 0.28),
+    rgba(47, 131, 209, 0.28)
+  );
+  border-radius: 80px;
+}
+.card-sub-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+.card-sub-title h3 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.element-d-card {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.element-d-card p {
+  width: 45%;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 22px;
+}
+p.name-card {
+  font-size: 16px;
+}
+.out-element-card {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.out-element-card p.name-card-out {
+  font-size: 18px;
+}
+.out-element-card p {
+  color: #fff;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 14px;
+}
+.btn-d-card {
+  margin: 0 auto;
+  width: 65%;
+  transition: opacity 0.5s;
+  padding: 10px;
+}
+.btn-d-card button {
+  display: block;
+  width: 100%;
+  height: 30px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(48, 216, 165);
+  margin-top: 15px;
+}
+.btn-d-card button:hover {
+  opacity: 0.8;
+}
+.img-bottom {
+  margin-top: 20px;
+}
+/*POPUP DIAGNOSTIC*/
+.popup-close {
+  width: 100%;
+  text-align: right;
+}
+.popup-close img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.popup-diagnostic-container {
+  margin: 0 auto;
+  width: 95%;
+}
+.popup-diagnostic-container p {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 4px;
+}
+.popup-form-diagnostic {
+  width: 1000%;
+}
+.popup-form-diagnostic {
+  width: 100%;
+}
+.popup-form-diagnostic textarea {
+  width: 100%;
+  height: 200px;
+  border: none;
+  background-color: rgb(174, 228, 246);
+  padding: 3px;
+  resize: none;
+}
+.popup-form-diagnostic button {
+  margin-top: 10px;
+  width: 100%;
+  height: 25px;
+  color: var(--button-label);
+  font-weight: 700;
+  text-align: center;
+  align-items: center;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(48, 216, 165);
+}
+/*Footer*/
+footer {
+  text-align: center;
+  margin-top: 30px;
+  width: 100%;
+}
+footer p {
+  color: rgb(0, 167, 167);
+  font-size: 10px;
+  font-weight: 700;
+}

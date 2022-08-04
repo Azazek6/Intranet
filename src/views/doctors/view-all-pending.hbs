@@ -1,0 +1,39 @@
+<main class="container">
+  <section>
+    <div class="card-cites">
+      <table>
+        <thead>
+          <tr>
+            <th>FECHA</th>
+            <th>PACIENTE</th>
+            <th>ESPECIALIDAD</th>
+            <th>ESTADO</th>
+            <th>OPERACIONES</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if cites}}
+            {{#each cites}}
+              <tr>
+                <td class="td-firts">{{date}}</td>
+                <td> {{name}} </td>
+                <td> {{especialitys}} </td>
+                <td class="td-pending">{{status}}</td>
+                <td class="td-end">
+                  <div class="btnPro">
+                    <a href="">Procesar</a>
+                  </div>
+                </td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr>
+              <td colspan="5" class="td-firts">No tiene citas</td>
+            </tr>
+          {{/if}}
+
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

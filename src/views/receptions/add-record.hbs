@@ -1,0 +1,57 @@
+<main class="container">
+  <section class="add-item">
+    <div class="card-record">
+      <div class="card-title">
+        <h2>Nuevo Historial M&eacute;dico</h2>
+      </div>
+      <form action="/receptionist/addRecord" method="post">
+        <div class="card-form gen-record">
+          <div class="section1">
+            <div class="card-items-form item-record">
+              <label for="record">N&uacute;mero de Historial:</label>
+              <input type="text" name="record" id="record" autofocus maxlength="6"/>
+            </div>
+            <div class="card-items-form item-record">
+              <label for="dni">DNI del Paciente:</label>
+              <input type="text" name="dni" id="dni" maxlength="8"/>
+            </div>
+            <div class="card-items-form item-record">
+              <label for="lastname">Apellidos:</label>
+              <input type="text" name="lastname" id="lastname" />
+            </div>
+            <div class="card-items-form item-record">
+              <label for="name">Nombres:</label>
+              <input type="text" name="name" id="name" />
+            </div>
+          </div>
+          <div class="section2">
+            <div class="card-items-form item-record">
+              <label for="age">Edad del Paciente:</label>
+              <input type="text" name="age" id="age" maxlength="2"/>
+            </div>
+            <div class="card-items-form item-record">
+              <label for="date_of_birth">Fecha de Nacimiento:</label>
+              <input type="date" name="date_of_birth" id="date_of_birth" />
+            </div>
+            <div class="card-items-form item-record">
+              <label for="address">Direcci&oacute;n Actual:</label>
+              <input type="text" name="address" id="address" />
+            </div>
+            <div class="card-items-form item-record">
+              <label for="status">Estado Civil:</label>
+              <select name="status" id="status">
+                <option value="">-- Seleccione estado Civil --</option>
+                <option value="Soltero">Soltero</option>
+                <option value="Casado">Casado</option>
+                <option value="Viudo">Viudo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card-items-button">
+          <button type="submit">REGISTRAR</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

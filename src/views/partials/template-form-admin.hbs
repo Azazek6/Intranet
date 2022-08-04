@@ -1,0 +1,47 @@
+<main class="container">
+  <section class="add-item">
+    <div class="card-add">
+      <div class="card-title">
+        <h2>Nuevos {{title}} </h2>
+      </div>
+      <form action="/admin/{{action}}" method="post">
+        <div class="card-form">
+          <div class="card-items-form">
+            <label for="dni">DNI:</label>
+            <input type="text" name="dni" id="dni" autofocus maxlength="8" />
+          </div>
+          <div class="card-items-form">
+            <label for="name">Nombre:</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div class="card-items-form">
+            <label for="lastname">Apellidos:</label>
+            <input type="text" name="lastname" id="lastname" />
+          </div>
+          <div class="card-items-form">
+            <label for="phone">Tel&eacute;fono:</label>
+            <input type="text" name="phone" id="phone" maxlength="9" />
+          </div>
+          <div class="card-items-form">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          {{#if especiality}}
+            <div class="card-items-form">
+              <label for="email">Especialidad:</label>
+              <select name="especiality" id="especiality">
+                <option value="">-- Seleccione especialidad --</option>
+                <option value="Medicina General">Medicina General</option>
+                <option value="Enfermeria">Enfermeria</option>
+                <option value="Psicologia">Psicologia</option>
+              </select>
+            </div>
+          {{/if}}
+          <div class="card-items-button">
+            <button type="submit">REGISTRAR</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
