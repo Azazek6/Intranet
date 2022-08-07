@@ -1,17 +1,16 @@
-const Reception = require("../models/Reception.model");
-const User = require("../models/User.model");
-const Admin = require("../models/Admin.model");
-const Doctor = require("../models/Doctor.model");
-const adminController = {};
+import Reception from "../models/Reception.model.js";
+import User from "../models/User.model.js";
+import Admin from "../models/Admin.model.js";
+import Doctor from "../models/Doctor.model.js";
 
-adminController.addRepPage = (req, res) => {
+export const addRepPage = (req, res) => {
   res.render("admin/add-receptionist", {
     title: "Recepcionistas",
     action: "addReceptionist",
   });
 };
 
-adminController.addDocPage = (req, res) => {
+export const addDocPage = (req, res) => {
   res.render("admin/add-doctors", {
     title: "Doctores",
     action: "addDoctor",
@@ -19,7 +18,7 @@ adminController.addDocPage = (req, res) => {
   });
 };
 
-adminController.addAdmPage = (req, res) => {
+export const addAdmPage = (req, res) => {
   res.render("admin/add-admins", {
     title: "Administradores",
     action: "addAdmin",
@@ -27,7 +26,7 @@ adminController.addAdmPage = (req, res) => {
 };
 
 //Procesos
-adminController.ProccessRepPage = async (req, res) => {
+export const ProccessRepPage = async (req, res) => {
   const { dni, name, lastname, phone, email } = req.body;
   const validateDni = await Reception.findOne({ dni: dni });
 
@@ -77,7 +76,7 @@ adminController.ProccessRepPage = async (req, res) => {
   }
 };
 
-adminController.ProccessDocPage = async (req, res) => {
+export const ProccessDocPage = async (req, res) => {
   const { dni, name, lastname, phone, email, especiality } = req.body;
   const validateDni = await Doctor.findOne({ dni: dni });
   if (!dni || !name || !lastname || !phone || !email || !especiality) {
@@ -127,7 +126,7 @@ adminController.ProccessDocPage = async (req, res) => {
   }
 };
 
-adminController.ProccessAdmPage = async (req, res) => {
+export const ProccessAdmPage = async (req, res) => {
   const { dni, name, lastname, phone, email } = req.body;
   const validateDni = await Admin.findOne({ dni: dni });
   if (!dni || !name || !lastname || !phone || !email) {
@@ -169,5 +168,3 @@ adminController.ProccessAdmPage = async (req, res) => {
     }
   }
 };
-
-module.exports = adminController;

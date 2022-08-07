@@ -1,9 +1,8 @@
-const Admin = require("../models/Admin.model");
-const Doctor = require("../models/Doctor.model");
-const Recepcionist = require("../models/Reception.model");
-const helpers = {};
+import Admin from "../models/Admin.model.js";
+import Doctor from "../models/Doctor.model.js";
+import Recepcionist from "../models/Reception.model.js";
 
-helpers.isAdmin = (user) => {
+export const isAdmin = (user) => {
   if (user != null) {
     if (user.rol == "Administrador") {
       return true;
@@ -12,7 +11,7 @@ helpers.isAdmin = (user) => {
     return false;
   }
 };
-helpers.isDoctor = (user) => {
+export const isDoctor = (user) => {
   if (user != null) {
     if (user.rol == "Doctor") {
       return true;
@@ -21,7 +20,7 @@ helpers.isDoctor = (user) => {
     return false;
   }
 };
-helpers.isRecepcionist = (user) => {
+export const isRecepcionist = (user) => {
   if (user != null) {
     if (user.rol == "Recepcionista") {
       return true;
@@ -30,7 +29,7 @@ helpers.isRecepcionist = (user) => {
     return false;
   }
 };
-helpers.getNameUser = async (user) => {
+export const getNameUser = async (user) => {
   let names = "";
   if (user != null) {
     const admin = await Admin.findById(user.user).lean();
@@ -50,10 +49,8 @@ helpers.getNameUser = async (user) => {
     }
   }
 };
-helpers.setDate = (date) => {
+export const setDate = (date) => {
   const setNewDate = new Date(date);
   const newDate = setNewDate.toDateString();
   return newDate;
 };
-
-module.exports = helpers;

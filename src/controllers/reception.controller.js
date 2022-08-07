@@ -1,22 +1,19 @@
-const Record = require("../models/Record.model");
-const Especiality = require("../models/Especiality.model");
-const Doctor = require("../models/Doctor.model");
-const Cite = require("../models/Cite.model");
-const receptionController = {};
+import Record from "../models/Record.model.js";
+import Especiality from "../models/Especiality.model.js";
+import Doctor from "../models/Doctor.model.js";
+import Cite from "../models/Cite.model.js";
 
-receptionController.getRecordPage = (req, res) => {
-  res.render("receptions/add-record");
-};
-receptionController.getGenerateCite = async (req, res) => {
+export const getRecordPage = (req, res) => res.render("receptions/add-record");
+
+export const getGenerateCite = async (req, res) => {
   const especialities = await Especiality.find().lean();
   res.render("receptions/generate-cite", { especialities });
 };
-receptionController.getSearchPage = (req, res) => {
+export const getSearchPage = (req, res) =>
   res.render("receptions/search-record");
-};
 
 //Procesos
-receptionController.processRecord = async (req, res) => {
+export const processRecord = async (req, res) => {
   const { record, dni, lastname, name, age, date_of_birth, address, status } =
     req.body;
   const validateDni = await Record.findOne({ dni: dni });
@@ -71,7 +68,7 @@ receptionController.processRecord = async (req, res) => {
 };
 
 //Generar Cita Médica
-receptionController.processCite = async (req, res) => {
+export const processCite = async (req, res) => {
   const { patient, dni, name, date, especialitys, doctors, amount } = req.body;
   if (patient != "") {
     if (
@@ -107,7 +104,7 @@ receptionController.processCite = async (req, res) => {
 };
 
 //Buscar un solo registro
-receptionController.getOneRecord = async (req, res) => {
+export const getOneRecord = async (req, res) => {
   const { dni } = req.body;
   if (!isNaN(dni)) {
     const data = await Record.findOne({ dni: dni });
@@ -122,7 +119,7 @@ receptionController.getOneRecord = async (req, res) => {
 };
 
 //Obtener paciente
-receptionController.getPatient = async (req, res) => {
+export const getPatient = async (req, res) => {
   const { dni } = req.body;
   const data = await Record.findOne({ dni: dni });
   if (data != null) {
@@ -133,7 +130,7 @@ receptionController.getPatient = async (req, res) => {
 };
 
 //Obtener doctores
-receptionController.getAllDoctor = async (req, res) => {
+export const getAllDoctor = async (req, res) => {
   const { especiality } = req.body;
   const data = await Doctor.find({ especiality: especiality }).lean();
   if (data != null) {
@@ -142,5 +139,3 @@ receptionController.getAllDoctor = async (req, res) => {
     res.json(0);
   }
 };
-
-module.exports = receptionController;

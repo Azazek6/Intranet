@@ -1,22 +1,18 @@
-const helpers = {};
-
-helpers.isAdmin = (req, res, next)=>{
-  if(req.user.rol == 'Administrador'){
+export const isAdmin = (req, res, next) => {
+  if (req.user.rol == "Administrador") {
     return next();
   }
-  res.redirect('/');
+  res.redirect("/");
 };
-helpers.isDoctor = (req, res, next)=>{
-  if(req.user.rol == 'Doctor'){
+export const isDoctor = (req, res, next) => {
+  if (req.user.rol == "Doctor") {
     return next();
   }
-  res.redirect('/');
+  res.redirect("/");
 };
-helpers.isReceptionist = (req, res, next)=>{
-  if(req.user.rol == 'Recepcionista'){
+export const isReceptionist = (req, res, next) => {
+  if (req.user.rol == "Recepcionista") {
     return next();
   }
-  res.redirect('/');
+  res.redirect("/");
 };
-
-module.exports = helpers;

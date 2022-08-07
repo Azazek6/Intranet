@@ -1,9 +1,6 @@
-const { getNameUser } = require("../helpers/helpers");
-const indexController = {};
+import { getNameUser } from "../helpers/helpers.js";
 
-indexController.main = async (req, res) => {
+export const main = async (req, res) => {
   const names = await getNameUser(req.user);
-  res.render("index",{name: names});
+  res.render("index", { name: names });
 };
-
-module.exports = indexController;

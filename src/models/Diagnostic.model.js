@@ -1,4 +1,4 @@
-const moongose = require("mongoose");
+import moongose from "mongoose";
 
 const diagnosticModel = new moongose.Schema({
   diagnostic: { type: String, require: true },
@@ -7,4 +7,4 @@ const diagnosticModel = new moongose.Schema({
   date: { type: Date, default: Date.now },
 });
 
-module.exports = moongose.model("Diagnostic", diagnosticModel);
+export default moongose.model("Diagnostic", diagnosticModel);

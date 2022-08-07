@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const {Schema} = require('mongoose');
+import mongoose from "mongoose";
 
 const adminModel = new mongoose.Schema({
   dni: {type: Number, require: true},
@@ -10,4 +9,4 @@ const adminModel = new mongoose.Schema({
   date: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('Admin',adminModel);
+export default mongoose.model('Admin',adminModel);

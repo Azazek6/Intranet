@@ -1,17 +1,12 @@
-const User = require("../models/User.model");
-const passport = require("passport");
-const authController = {};
+import User from "../models/User.model.js";
+import passport from "passport";
 
-authController.signInPage = (req, res) => {
-  res.render("auth/signin");
-};
+export const signInPage = (req, res) => res.render("auth/signin");
 
 //Procesos
-authController.logOut = async (req, res, next) => {
+export const logOut = async (req, res, next) => {
   await req.logout((err) => {
-    if(err) return next(error);
-    res.redirect('/auth/signin');
+    if (err) return next(error);
+    res.redirect("/auth/signin");
   });
 };
-
-module.exports = authController;

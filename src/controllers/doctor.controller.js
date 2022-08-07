@@ -1,19 +1,17 @@
-const Cites = require("../models/Cite.model");
-const Record = require("../models/Record.model");
-const Doctor = require("../models/Doctor.model");
-const Diagnostic = require("../models/Diagnostic.model");
-const { setDate } = require("../helpers/helpers");
-
-const doctorController = {};
+import Cites from "../models/Cite.model.js";
+import Record from "../models/Record.model.js";
+import Doctor from "../models/Doctor.model.js";
+import Diagnostic from "../models/Diagnostic.model.js";
+import { setDate } from "../helpers/helpers.js";
 
 //Controladores principales
-doctorController.getCites = async (req, res) => {
+export const getCites = async (req, res) => {
   const cites = await Cites.find({ doctors: req.user.user })
     .sort({ date: "desc" })
     .lean();
   res.render("doctors/view-all-cites", { cites });
 };
-doctorController.getCitesPending = async (req, res) => {
+export const getCitesPending = async (req, res) => {
   const cites = await Cites.find({
     doctors: req.user.user,
     status: "Pendiente",
@@ -23,7 +21,7 @@ doctorController.getCitesPending = async (req, res) => {
   res.render("doctors/view-all-pending", { cites });
 };
 //
-doctorController.getCitesProcess = async (req, res) => {
+export const getCitesProcess = async (req, res) => {
   const dni = req.params.dni;
   const idCite = req.params.id;
   if (dni == "") {
@@ -47,7 +45,7 @@ doctorController.getCitesProcess = async (req, res) => {
 };
 
 //Procesos
-doctorController.processDiagnostic = async (req, res) => {
+export const processDiagnostic = async (req, res) => {
   const { diagnostic, doctor, patient, cite } = req.body;
   if (diagnostic == "" || doctor == "" || patient == "") {
     res.json(null);
@@ -60,5 +58,3 @@ doctorController.processDiagnostic = async (req, res) => {
     }
   }
 };
-
-module.exports = doctorController;

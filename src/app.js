@@ -1,30 +1,28 @@
 //Librerias a usar
-const express = require("express");
-const morgan = require("morgan");
-const routeMain = require("./routes/main.route");
-const routeAuth = require("./routes/auth.route");
-const routeAdmin = require("./routes/admin.route");
-const routeDoctor = require("./routes/doctor.route");
-const routeReceptionist = require("./routes/reception.route");
-const exphbs = require("express-handlebars");
-const path = require("path");
-const flash = require("connect-flash");
-const session = require("express-session");
-const helpers = require("./helpers/helpers");
+import express from "express";
+import morgan from "morgan";
+import router from "./routes/index.js";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+import exphbs from "express-handlebars";
+import flash from "connect-flash";
+import session from "express-session";
+import { isAdmin, isDoctor, isRecepcionist } from "./helpers/helpers.js";
 
 //Iniciando
 const app = express();
-const passport = require("passport");
-require("./config/passport");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+import passport from "passport";
+import "./config/passport.js";
 
 //Configuraciones
 app.set("PORT", process.env.PORT || 3000);
-app.set("views", path.join(__dirname, "views"));
+app.set("views", join(__dirname, "views"));
 
 const hbs = exphbs.create({
   defaultLayout: "main",
-  layoutsDir: path.join(app.get("views"), "layouts"),
-  partialsDir: path.join(app.get("views"), "partials"),
+  layoutsDir: join(app.get("views"), "layouts"),
+  partialsDir: join(app.get("views"), "partials"),
   runtimeOptions: {
     allowProtoPropertiesByDefault: true,
     // allowProtoMethodsByDefault: true
@@ -60,20 +58,16 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash("error_msg");
   res.locals.error = req.flash("error");
   res.locals.user = req.user || null;
-  res.locals.isAdmin = helpers.isAdmin(req.user);
-  res.locals.isDoctor = helpers.isDoctor(req.user);
-  res.locals.isReceptionist = helpers.isRecepcionist(req.user);
+  res.locals.isAdmin = isAdmin(req.user);
+  res.locals.isDoctor = isDoctor(req.user);
+  res.locals.isReceptionist = isRecepcionist(req.user);
   next();
 });
 
 //Rutas del servidor
-app.use(routeMain); //ruta principal
-app.use("/auth", routeAuth); //ruta ingreso
-app.use("/admin", routeAdmin); //ruta administrador
-app.use("/doctor", routeDoctor); //ruta doctor
-app.use("/receptionist", routeReceptionist); //ruta recepcionista
+app.use(router);
 
 //Archivos Estaticos
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 
-module.exports = app;
+export default app;

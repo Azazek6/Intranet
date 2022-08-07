@@ -2,10 +2,11 @@
   "name": "web_intranet_casagrande",
   "version": "1.0.0",
   "description": "rediseño de web intranet con nodejs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js --exec babel-node"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +24,11 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-cli": "^6.26.0",
+    "babel-loader": "^8.2.5",
     "nodemon": "^2.0.19"
   }
 }

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const citeModel = new mongoose.Schema({
   dni: { type: Number, require: true },
@@ -10,4 +10,4 @@ const citeModel = new mongoose.Schema({
   status: { type: String, require: false, default: "Pendiente" },
 });
 
-module.exports = mongoose.model("Cites", citeModel);
+export default mongoose.model("Cites", citeModel);
